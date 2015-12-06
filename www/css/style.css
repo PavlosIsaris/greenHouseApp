@@ -1,0 +1,185 @@
+.page--menu-page__background {
+    background-color: #333;
+}
+
+.page--menu-page__content {
+    color: white;
+}
+
+.menu-close,
+.menu-close > .toolbar-button {
+    color: #999;
+}
+
+.menu-list,
+.menu-item:first-child,
+.menu-item:last-child,
+.menu-item {
+    background-color: transparent;
+    background-image: none !important;
+    border-color: transparent;
+    color: #fff;
+}
+
+.menu-item {
+    padding: 0 0 0 20px;
+    line-height: 52px;
+    height: 52px;
+    text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+}
+
+    .menu-item:active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+.menu-notification {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 14px;
+    height: 16px;
+    line-height: 16px;
+    min-width: 16px;
+    font-weight: 600;
+}
+
+.bottom-menu-list,
+.bottom-menu-item:first-child,
+.bottom-menu-item:last-child,
+.bottom-menu-item {
+    border-color: #393939;
+    background-color: transparent;
+    background-image: none !important;
+    color: #ccc;
+}
+
+.bottom-menu-item:active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.chart_div canvas {
+    margin-top: 80px;
+    width: 85% !important;
+    height: 100% !important;
+    padding-left: 5%;
+}
+
+
+.chart_div ul {
+  list-style: none;
+}
+.chart_div ul li {
+  display: block;
+  padding-left: 30px;
+  position: relative;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  padding: 2px 8px 2px 28px;
+  font-size: 14px;
+  cursor: default;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+.chart_div li span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.datePickerBtn {
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+    position: absolute;
+}
+
+.datePickerTable {
+    float: right;
+    position: absolute;
+    left: 65px;
+    margin-top: 10px;
+}
+
+
+/*NEW LOADING (ONLY CSS)*/
+.loader, .loaderContainer, .loaderContainerWelcome, .loaderWelcome {
+    display:none;
+}
+
+.loaderContainer, .loaderContainerWelcome, .loaderContainerProfile{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: darkgrey;
+    z-index: -1;
+    opacity: 0.8;
+}
+.loader, .loaderWelcome, .loaderProfile {
+    position: absolute;
+    margin-top: -5em;
+    margin-left: -5em;
+    top: 50%;
+    left: 50%;
+    opacity: 1 !important;
+    z-index: -1;
+    font-size: 10px;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #ffffff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+.loader,
+.loader:after, .loaderWelcome, .loaderWelcome:after, .loaderProfile, .loaderProfile:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+ 
+.explanation {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -100px;
+}
+
+
+.yAxis {
+    position: absolute;
+    transform: rotate(270deg);
+    margin-top: 228px;
+    margin-left: -20px;
+    font-size: 70%;
+    visibility: hidden;
+}

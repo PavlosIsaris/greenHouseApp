@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!-- CSP support mode (required for Windows Universal apps): https://docs.angularjs.org/api/ng/directive/ngCsp -->
+<html lang="en" ng-app="app" ng-csp>
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Onsen UI Sliding Menu</title>
+
+    <!-- JS dependencies (order matters!) -->
+    <!--<script type="text/javascript" src="https://www.google.com/jsapi?autoload=
+    {'modules':[{'name':'visualization','version':'1.1','packages':
+    ['corechart']}]}"></script>-->
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/onsen/js/onsenui.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/webServices.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/humidityController.js"></script>
+    <script src="js/temperatureController.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/Chart.js"></script>
+    
+    <script src="js/app.js"></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <!-- CSP support mode (required for Windows Universal apps) -->
+    <link rel="stylesheet" href="lib/angular/angular-csp.css" />
+    
+</head>
+
+<body ng-controller="AppController">
+
+    <ons-navigator var="MainNav">
+    </ons-navigator>
+
+    <ons-template id="menu.html">
+        <ons-page modifier="menu-page">
+            <ons-toolbar modifier="transparent">
+            </ons-toolbar>
+            <ons-list class="menu-list">
+                <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('HumidityChart.html')">
+                    <i class="fa fa-tint"></i>
+                     Humidity
+                </ons-list-item>
+                <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('TemperatureChart.html')">
+                    <i class="fa fa-area-chart"></i>
+                     Temperature
+                </ons-list-item>
+
+                <!--<ons-list-item class="menu-item" ng-click="MainNav.resetToPage('page2.html')">
+                    <ons-icon icon="fa-twitter"></ons-icon>
+                    Official Twitter
+                </ons-list-item>-->
+            </ons-list>
+            <br>
+            <ons-list class="bottom-menu-list">
+                <ons-list-item class="bottom-menu-item" ng-click="MainNav.resetToPage('page2.html')">
+                    <i class="fa fa-github"></i> Github
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="HumidityChart.html">
+        <div class="loaderContainerWelcome">
+        </div>
+        <div class="loaderWelcome">Loading...</div>
+        <ons-page ng-controller="HumidityController">
+            <ons-sliding-menu main-page="pageOfHumidity.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="HumidityMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="pageOfHumidity.html">
+                <ons-page id="humidity">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(HumidityMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Humidity Chart</div>
+                    </ons-toolbar>
+                    <div>
+                        <div>
+                        <ons-button class="datePickerBtn" modifier="cta" ng-click="pickDate()">
+                            <i class="fa fa-calendar"></i>
+                        </ons-button>
+                        <div id="datepicker" class="datePickerTable"></div>
+                            <div class="chart_div">
+                            <div class="yAxis">Humidity (%)</div>
+                                <canvas width="500" height="500" id="humidityChart" data-ng-init="init()"></canvas>
+                                <!--<div id="humidityChart" data-ng-init="init()"></div>-->
+                                <div id="humidityLegend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </ons-page>
+            </ons-template>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="TemperatureChart.html">
+        <div class="loaderContainerWelcome">
+        </div>
+        <div class="loaderWelcome">Loading...</div>
+        <ons-page ng-controller="TemperatureController">
+            <ons-sliding-menu main-page="pageOfTemperature.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="TemperatureMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="pageOfTemperature.html">
+                <ons-page id="temperature">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(TemperatureMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Temperature Chart</div>
+                    </ons-toolbar>
+                    <div>
+                        <div>
+                        <ons-button class="datePickerBtn" modifier="cta" ng-click="pickDate()">
+                            <i class="fa fa-calendar"></i>
+                        </ons-button>
+                        <div id="datepickerTemperature" class="datePickerTable"></div>
+                            <div class="chart_div">
+                            <div class="yAxis" style="margin-left:-45px !important">Temperature (Celsius)</div>
+                                <canvas width="500" height="500"  id="temperatureChart" data-ng-init="init()"></canvas>
+                                <div id="temperatureLegend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </ons-page>
+            </ons-template>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="page2.html">
+        <ons-page>
+            <ons-sliding-menu main-page="mainPage.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="mainPageMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="mainPage.html">
+                <ons-page id="mainPage">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(mainPageMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Green house app.</div>
+                    </ons-toolbar>
+                </ons-page>
+            </ons-template>
+
+        </ons-page>
+    </ons-template>
+</body>
+</html>
