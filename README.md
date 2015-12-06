@@ -1,3 +1,6 @@
+# greenHouseApp
+An Internet of Things Agriculture mobile app
+====
 Onsen UI Quick Startup Guide
 ====
 
@@ -50,5 +53,4 @@ You should see running app on browser and you can start to develop your app with
  * `gulp build` - Build several files for project.
  * `gulp jshint` - Generate [jshint](https://github.com/jshint/jshint) report.
 =======
-# greenHouseApp
-An Internet of Things Agriculture mobile app
+
