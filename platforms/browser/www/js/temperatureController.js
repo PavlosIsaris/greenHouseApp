@@ -12,7 +12,7 @@ function callTemperatureController($scope, $timeout,dataFromServer) {
 		$(".loaderContainerWelcome").css("display","block");
 		$(".loaderWelcome").css("display","block");
 		//console.log($scope.getYesterDay());
-		var date = $scope.getYesterDay()
+		var date = $scope.getToday();
 		rest_fetchTemperatures(date).success(function (data) {
 			//console.log(data);
 			if(data.length > 0) {

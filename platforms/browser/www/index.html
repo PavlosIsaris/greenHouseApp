@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <title>Onsen UI Sliding Menu</title>
+    <title>GreenHouse IoT App</title>
 
     <!-- JS dependencies (order matters!) -->
     <!--<script type="text/javascript" src="https://www.google.com/jsapi?autoload=
@@ -19,6 +19,7 @@
     <script src="js/index.js"></script>
     <script src="js/humidityController.js"></script>
     <script src="js/temperatureController.js"></script>
+    <script src="js/methaneController.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
@@ -55,6 +56,10 @@
                     <i class="fa fa-area-chart"></i>
                      Temperature
                 </ons-list-item>
+                <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('MethaneChart.html')">
+                    <i class="fa fa-area-chart"></i>
+                     Methane
+                </ons-list-item>
 
                 <!--<ons-list-item class="menu-item" ng-click="MainNav.resetToPage('page2.html')">
                     <ons-icon icon="fa-twitter"></ons-icon>
@@ -63,9 +68,9 @@
             </ons-list>
             <br>
             <ons-list class="bottom-menu-list">
-                <ons-list-item class="bottom-menu-item" ng-click="MainNav.resetToPage('page2.html')">
+                <a href="https://github.com/PavlosIsaris/greenHouseApp"><ons-list-item class="menu-item">
                     <i class="fa fa-github"></i> Github
-                </ons-list-item>
+                </ons-list-item></a>
             </ons-list>
         </ons-page>
     </ons-template>
@@ -135,6 +140,43 @@
                             <div class="yAxis" style="margin-left:-45px !important">Temperature (Celsius)</div>
                                 <canvas width="500" height="500"  id="temperatureChart" data-ng-init="init()"></canvas>
                                 <div id="temperatureLegend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </ons-page>
+            </ons-template>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="MethaneChart.html">
+        <div class="loaderContainerWelcome">
+        </div>
+        <div class="loaderWelcome">Loading...</div>
+        <ons-page ng-controller="MethaneController">
+            <ons-sliding-menu main-page="pageOfMethane.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="MethaneMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="pageOfMethane.html">
+                <ons-page id="methane">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(MethaneMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Methane Chart</div>
+                    </ons-toolbar>
+                    <div>
+                        <div>
+                        <ons-button class="datePickerBtn" modifier="cta" ng-click="pickDate()">
+                            <i class="fa fa-calendar"></i>
+                        </ons-button>
+                        <div id="datepickerMethane" class="datePickerTable"></div>
+                            <div class="chart_div">
+                            <div class="yAxis">Methane</div>
+                                <canvas width="500" height="500" id="methaneChart" data-ng-init="init()"></canvas>
+                                <!--<div id="humidityChart" data-ng-init="init()"></div>-->
+                                <div id="methaneLegend"></div>
                             </div>
                         </div>
                     </div>

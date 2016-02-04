@@ -10,8 +10,8 @@ function callHumidityController($scope, $timeout,dataFromServer) {
 			$(".loaderWelcome").css("z-index","6");
 			$(".loaderContainerWelcome").css("display","block");
 			$(".loaderWelcome").css("display","block");
-			console.log($scope.getYesterDay());
-			var date = $scope.getYesterDay();
+			console.log($scope.getToday());
+			var date = $scope.getToday();
 			rest_fetchHumidities(date).success(function (data) {
 				console.log(data);
 				if(data.length > 0) {

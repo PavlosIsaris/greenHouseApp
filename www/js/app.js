@@ -14,7 +14,7 @@
                 });
         };
 
-        $scope.getYesterDay = function() {
+        $scope.getToday = function() {
         	var yesterday = new Date();
 		    var dd = yesterday.getDate();
 		    var mm = yesterday.getMonth()+1; //January is 0!
@@ -31,7 +31,7 @@
         };
 
         $scope.createChart = function(chartData, chartOptions, chartId, legendId) {
-	    	console.log(chartData);
+	    	//console.log(chartData);
 	    	$("#" + chartId).empty();
 	    	$("#" + legendId).empty();
 	    	if(dataFromServer.myLineChart != undefined) {
@@ -74,6 +74,10 @@
 
 	module.controller('TemperatureController', function ($scope, $timeout) {
         callTemperatureController($scope, $timeout, dataFromServer);
+    });
+
+    module.controller('MethaneController', function ($scope, $timeout) {
+        callMethaneController($scope, $timeout, dataFromServer);
     });
 
 }());
