@@ -17,6 +17,7 @@
     <script src="cordova.js"></script>
     <script src="js/webServices.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/carbonMonoxideController.js"></script>
     <script src="js/humidityController.js"></script>
     <script src="js/temperatureController.js"></script>
     <script src="js/methaneController.js"></script>
@@ -60,11 +61,10 @@
                     <i class="fa fa-area-chart"></i>
                      Methane
                 </ons-list-item>
-
-                <!--<ons-list-item class="menu-item" ng-click="MainNav.resetToPage('page2.html')">
-                    <ons-icon icon="fa-twitter"></ons-icon>
-                    Official Twitter
-                </ons-list-item>-->
+                <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('CarbonMonoxide.html')">
+                    <i class="fa fa-area-chart"></i>
+                     Carbon Monoxide
+                </ons-list-item>
             </ons-list>
             <br>
             <ons-list class="bottom-menu-list">
@@ -177,6 +177,43 @@
                                 <canvas width="500" height="500" id="methaneChart" data-ng-init="init()"></canvas>
                                 <!--<div id="humidityChart" data-ng-init="init()"></div>-->
                                 <div id="methaneLegend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </ons-page>
+            </ons-template>
+        </ons-page>
+    </ons-template>
+
+     <ons-template id="CarbonMonoxide.html">
+        <div class="loaderContainerWelcome">
+        </div>
+        <div class="loaderWelcome">Loading...</div>
+        <ons-page ng-controller="CarbonMonoxideController">
+            <ons-sliding-menu main-page="pageOfCarbonMonoxide.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="CarbonMonoxideMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="pageOfCarbonMonoxide.html">
+                <ons-page id="carbonMonoxide">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(CarbonMonoxideMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Carbon Monoxide Chart</div>
+                    </ons-toolbar>
+                    <div>
+                        <div>
+                        <ons-button class="datePickerBtn" modifier="cta" ng-click="pickDate()">
+                            <i class="fa fa-calendar"></i>
+                        </ons-button>
+                        <div id="datepickerCarbonMonoxide" class="datePickerTable"></div>
+                            <div class="chart_div">
+                            <div class="yAxis">Methane</div>
+                                <canvas width="500" height="500" id="carbonMonoxideChart" data-ng-init="init()"></canvas>
+                                <!--<div id="humidityChart" data-ng-init="init()"></div>-->
+                                <div id="carbonMonoxideLegend"></div>
                             </div>
                         </div>
                     </div>

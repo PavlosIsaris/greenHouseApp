@@ -80,4 +80,9 @@
         callMethaneController($scope, $timeout, dataFromServer);
     });
 
+    module.controller('CarbonMonoxideController', function ($scope, $timeout) {
+    	console.log("before CarbonMonoxideController");
+        callCarbonMonoxideController($scope, $timeout, dataFromServer);
+    });
+
 }());
