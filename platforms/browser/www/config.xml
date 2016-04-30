@@ -8,5 +8,6 @@
         Onsen UI Team
     </author>
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="*" subdomains="true" />
+    <allow-navigation href="*" />
 </widget>
