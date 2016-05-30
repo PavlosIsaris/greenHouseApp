@@ -1,4 +1,4 @@
-var api_server = 'http://192.168.1.4/greenhouse/';
+var api_server = 'http://192.168.1.100/greenhouse/';
 var timeout = 20000;
 
 function rest_fetchHumidities(date) {

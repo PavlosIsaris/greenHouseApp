@@ -187,3 +187,56 @@
 a {
   text-decoration: none;
 }
+
+.mainArea {
+  margin: 30% auto;
+  width: 50%;
+  text-align: center;
+  color: darkgreen;
+  font-size: 800%;
+}
+
+.navigation-bar__title {
+  color: darkgreen;
+}
+
+.overLimitNotification {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 150px;
+  color: #fff;
+  padding: 2px;
+  position: absolute;
+  margin-left: -10px;
+  margin-top: 2px;
+}
+
+.overLimitNotification span {
+  margin-top: -5px;
+  margin-top: -15px;
+  position: absolute;
+}
+
+.red {
+  color:red;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    width: 30%;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}

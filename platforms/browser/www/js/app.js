@@ -66,6 +66,33 @@
 			document.getElementById(legendId).appendChild(legendHolder.firstChild);
 	    };
 
+	    dataFromServer.humidityOverLimit = [];
+	    rest_fetchHumidityOverLimit().success(function (data) {
+	    	$scope.humidityOverLimitNum = data.length;
+	    	dataFromServer.humidityOverLimit = data;
+	    	console.log($scope.humidityOverLimitNum);
+	    	$scope.$apply();
+
+    	}).error(function (jqXhr, textStatus, errorThrown) {
+				console.log(jqXhr.error);
+				console.log(textStatus);
+				console.log(errorThrown);
+				
+		});
+
+		dataFromServer.temperatureOverLimit = [];
+	    rest_fetchTemperatureOverLimit().success(function (data) {
+	    	$scope.temperatureOverLimitNum = data.length;
+	    	dataFromServer.temperatureOverLimit = data;
+	    	$scope.$apply();
+
+    	}).error(function (jqXhr, textStatus, errorThrown) {
+				console.log(jqXhr.error);
+				console.log(textStatus);
+				console.log(errorThrown);
+				
+		});
+
 	});
 
 	module.controller('HumidityController', function ($scope, $timeout) {
@@ -81,8 +108,15 @@
     });
 
     module.controller('CarbonMonoxideController', function ($scope, $timeout) {
-    	console.log("before CarbonMonoxideController");
         callCarbonMonoxideController($scope, $timeout, dataFromServer);
+    });
+
+    module.controller('HumidityOverLimitController', function ($scope, $timeout) {
+        callHumidityOverLimitController($scope, $timeout, dataFromServer);
+    });
+
+    module.controller('TemperatureOverLimitController', function ($scope, $timeout) {
+        callTemperatureOverLimitController($scope, $timeout, dataFromServer);
     });
 
 }());

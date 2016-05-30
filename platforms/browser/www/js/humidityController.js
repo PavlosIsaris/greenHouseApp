@@ -140,6 +140,14 @@ function callHumidityController($scope, $timeout,dataFromServer) {
 					$(".loaderWelcome").css("display","block");
 					rest_fetchHumidities(date).success(function (data) {
 						console.log(data);
+						/*var slaveNames = [];
+						for(var index = 0; index <= data.length; index ++) {
+							if(slaveNames.indexOf(data[index].slave_name) == -1) {
+								//new slave 
+								slaveNames.push(data[index].slave_name);
+								var dataSet = [];
+							}
+						}*/
 						if(data.length > 0) {
 							var currSlave = data[0].slave_name;
 							var dataSetS1 = [];

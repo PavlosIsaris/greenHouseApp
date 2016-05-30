@@ -187,3 +187,15 @@
 a {
   text-decoration: none;
 }
+
+.mainArea {
+  margin: 30% auto;
+  width: 50%;
+  text-align: center;
+  color: darkgreen;
+  font-size: 800%;
+}
+
+.navigation-bar__title {
+  color: darkgreen;
+}

@@ -19,6 +19,8 @@
     <script src="js/index.js"></script>
     <script src="js/carbonMonoxideController.js"></script>
     <script src="js/humidityController.js"></script>
+    <script src="js/humidityOverLimitController.js"></script>
+    <script src="js/temperatureOverLimitController.js"></script>
     <script src="js/temperatureController.js"></script>
     <script src="js/methaneController.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
@@ -54,7 +56,7 @@
                      Humidity
                 </ons-list-item>
                 <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('TemperatureChart.html')">
-                    <i class="fa fa-area-chart"></i>
+                    <i class="fa fa-bar-chart"></i>
                      Temperature
                 </ons-list-item>
                 <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('MethaneChart.html')">
@@ -62,12 +64,20 @@
                      Methane
                 </ons-list-item>
                 <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('CarbonMonoxide.html')">
-                    <i class="fa fa-area-chart"></i>
+                    <i class="fa fa-tree"></i>
                      Carbon Monoxide
                 </ons-list-item>
             </ons-list>
             <br>
             <ons-list class="bottom-menu-list">
+                <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('HumidityOverLimit.html')">
+                    <i class="red fa fa-tint"></i>
+                     Humidity Over Limit <span class="overLimitNotification"><span>{{humidityOverLimitNum}}</span><span>
+                </ons-list-item>
+                <ons-list-item class="menu-item" ng-click="MainNav.resetToPage('TemperatureOverLimit.html')">
+                    <i class="red fa fa-tint"></i>
+                     Temperature Over Limit <span class="overLimitNotification"><span>{{temperatureOverLimitNum}}</span><span>
+                </ons-list-item>
                 <a href="https://github.com/PavlosIsaris/greenHouseApp"><ons-list-item class="menu-item">
                     <i class="fa fa-github"></i> Github
                 </ons-list-item></a>
@@ -222,6 +232,84 @@
         </ons-page>
     </ons-template>
 
+    <ons-template id="HumidityOverLimit.html">
+        <div class="loaderContainerWelcome">
+        </div>
+        <div class="loaderWelcome">Loading...</div>
+        <ons-page ng-controller="HumidityOverLimitController">
+            <ons-sliding-menu main-page="pageOfHumidityOverLimit.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="HUmidityOverLimitMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="pageOfHumidityOverLimit.html">
+                <ons-page id="humidityOverLimit">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(HUmidityOverLimitMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Humidity Over Limit</div>
+                    </ons-toolbar>
+                    <div>
+                        <table>
+                          <tr>
+                            <th>Humidity</th>
+                            <th>Sensor</th>
+                            <th>Added on</th>
+                            <th>Logs</th>
+                          </tr>
+                          <tr ng-repeat="item in humidityOverLimit">
+                              <td>{{item.humidity}} %</td>
+                              <td>{{item.slave_name}}</td>
+                              <td>{{item.added_on}}</td>
+                              <td>{{item.numberOfLogs}}</td>
+                          </tr>
+                        </table>
+                    </div>
+                </ons-page>
+            </ons-template>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="TemperatureOverLimit.html">
+        <div class="loaderContainerWelcome">
+        </div>
+        <div class="loaderWelcome">Loading...</div>
+        <ons-page ng-controller="TemperatureOverLimitController">
+            <ons-sliding-menu main-page="pageOfTemperatureOverLimit.html" menu-page="menu.html" max-slide-distance="260px"
+                              type="reveal" var="TemperatureOverLimitMenu" side="left" , swipeable="true">
+            </ons-sliding-menu>
+            <ons-template id="pageOfTemperatureOverLimit.html">
+                <ons-page id="temperatureOverLimit">
+                    <ons-toolbar>
+                        <div class="left">
+                            <ons-toolbar-button ng-click="openMenu(TemperatureOverLimitMenu)">
+                                <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                            </ons-toolbar-button>
+                        </div>
+                        <div class="center">Humidity Over Limit</div>
+                    </ons-toolbar>
+                    <div>
+                        <table>
+                          <tr>
+                            <th>Temperature</th>
+                            <th>Sensor</th>
+                            <th>Added on</th>
+                            <th>Logs</th>
+                          </tr>
+                          <tr ng-repeat="item in temperatureOverLimit">
+                              <td>{{item.temperature}} C</td>
+                              <td>{{item.slave_name}}</td>
+                              <td>{{item.added_on}}</td>
+                              <td>{{item.numberOfLogs}}</td>
+                          </tr>
+                        </table>
+                    </div>
+                </ons-page>
+            </ons-template>
+        </ons-page>
+    </ons-template>
+
     <ons-template id="page2.html">
         <ons-page>
             <ons-sliding-menu main-page="mainPage.html" menu-page="menu.html" max-slide-distance="260px"
@@ -237,6 +325,7 @@
                         </div>
                         <div class="center">Green house app.</div>
                     </ons-toolbar>
+                    <div class=mainArea><i class="fa fa-pagelines" aria-hidden="true"></i></div>
                 </ons-page>
             </ons-template>
 
